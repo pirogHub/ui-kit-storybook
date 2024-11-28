@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
 
-import {ChevronLeft, ChevronRight} from '@mui/icons-material';
-// TODO заменить на свои
-import {IconButton, Stack, Typography, styled} from '@mui/material';
-import {DateCalendar, PickersCalendarHeaderProps, PickersDay, PickersDayProps} from '@mui/x-date-pickers';
+import {styled} from '@mui/material';
+import {
+	//
+	DateCalendar,
+	PickersCalendarHeaderProps,
+	PickersDay,
+	PickersDayProps,
+} from '@mui/x-date-pickers';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {PickersYearProps} from '@mui/x-date-pickers/YearCalendar/PickersYear';
@@ -12,7 +16,9 @@ import 'dayjs/locale/ru';
 // Подключение русской локали
 import updateLocale from 'dayjs/plugin/updateLocale';
 
+import {getIconUrlByName} from '../../icons-data/icons-data';
 import {ButtonProps, ButtonStyled} from '../button/button';
+import {Icon2} from '../icon/icon';
 
 // Плагин для обновления локали
 dayjs.extend(updateLocale);
@@ -47,6 +53,7 @@ const Wrapper = styled('div')({
 	alignItems: 'center',
 	flexDirection: 'column',
 	width: '338px',
+	paddingTop: '16px',
 });
 
 // Стилизация календаря
@@ -102,8 +109,9 @@ const StyledStaticDatePicker = styled(DateCalendar)({
 const CustomCalendarHeaderRoot = styled('div')({
 	display: 'flex',
 	justifyContent: 'space-between',
-	padding: '8px 16px',
-	alignItems: 'center',
+	alignItems: 'start',
+	padding: '0 26px',
+	height: '40px',
 });
 const CustomDay = (props: PickersDayProps<dayjs.Dayjs>) => {
 	const dayNum = props.day.day();
@@ -202,15 +210,23 @@ const CustomCalendarHeader = (props: PickersCalendarHeaderProps<dayjs.Dayjs>) =>
 
 	return (
 		<CustomCalendarHeaderRoot {...props}>
-			<Stack spacing={1} direction="row">
-				<IconButton onClick={selectPreviousMonth} title="Previous month">
-					<ChevronLeft htmlColor="#2EACFB" />
-				</IconButton>
-			</Stack>
-			<Typography
+			{/* <Stack spacing={1} direction="row"> */}
+			<div>
+				{/* <IconButton onClick={selectPreviousMonth} title="Previous month"> */}
+				<Icon2
+					color="rgba(46, 172, 251, 1)"
+					sx={{transform: 'rotate(90deg)', cursor: 'pointer'}}
+					size={24}
+					url={getIconUrlByName('chevronDown')}
+					onClick={selectPreviousMonth}
+					title="Previous month"
+				/>
+				{/* <ChevronLeft htmlColor="#2EACFB" /> */}
+			</div>
+			<span
 				onClick={handleToggleView}
-				variant="body2"
-				sx={{
+				// variant="body2"
+				style={{
 					display: 'flex',
 					gap: '4px',
 					cursor: 'pointer',
@@ -219,12 +235,20 @@ const CustomCalendarHeader = (props: PickersCalendarHeaderProps<dayjs.Dayjs>) =>
 			>
 				<span>{currentMonth.locale('ru').format('MMMM')}</span>
 				<span style={{color: '#2EACFB'}}>{currentMonth.format('YYYY')}</span>
-			</Typography>
-			<Stack spacing={1} direction="row">
-				<IconButton onClick={selectNextMonth} title="Next month">
-					<ChevronRight htmlColor="#2EACFB" />
-				</IconButton>
-			</Stack>
+			</span>
+			{/* <Stack spacing={1} direction="row"> */}
+			<div>
+				{/* <IconButton onClick={selectNextMonth} title="Next month"> */}
+				{/* <ChevronRight htmlColor="#2EACFB" /> */}
+				<Icon2
+					color="rgba(46, 172, 251, 1)"
+					sx={{transform: 'rotate(-90deg)', cursor: 'pointer'}}
+					size={24}
+					url={getIconUrlByName('chevronDown')}
+					onClick={selectNextMonth}
+					title="Next month"
+				/>
+			</div>
 		</CustomCalendarHeaderRoot>
 	);
 };
