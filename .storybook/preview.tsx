@@ -4,23 +4,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import {
   skyAllianceDarkTheme,
   skyAllianceLightTheme,
-  skyAllianceMUITheme,
 } from "../src/default-theme/default-theme"; // Убедитесь, что путь правильный
 import { CssBaseline } from "@mui/material";
-
-// const preview: Preview = {
-//   parameters: {
-//     controls: {
-//       matchers: {
-//         color: /(background|color)$/i,
-//         date: /Date$/i,
-//       },
-//     },
-//   },
-// };
-
-// export default preview;
-// .storybook/preview.js
 
 export const globalTypes = {
   theme: {
@@ -44,11 +29,8 @@ const THEMES = {
 };
 
 const withMuiTheme = (Story, context) => {
-  // The theme global we just declared
   const { theme: themeKey } = context.globals;
 
-  // only recompute the theme if the themeKey changes
-  // console.log("skyAllianceLightTheme", skyAllianceLightTheme);
   const theme = useMemo(() => THEMES[themeKey] || THEMES["light"], [themeKey]);
   return (
     <ThemeProvider theme={theme}>
