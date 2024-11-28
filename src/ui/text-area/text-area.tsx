@@ -198,7 +198,7 @@ export const TextAreaField: React.FC<
 							onBlur={() => setIsFocused(false)}
 							onChange={(e) => setValue(e.target.value)}
 						/>
-						<Fade in={_isFocusedManual || (isFocused && !value)} unmountOnExit>
+						<Fade in={_isFocusedManual || !value} unmountOnExit>
 							<span className="placeholder">
 								<span>{placeholder}</span>
 							</span>
