@@ -59,6 +59,7 @@ const Root = styled("button", {
   hover?: boolean;
   isRounded?: boolean;
 }>(({ theme, view, isRounded, size, isOnlyIcon }) => {
+  console.log(theme);
   const map = (theme as skyAllianceMUITheme).skyAlliance.colors[view];
 
   const sizeStyles = getButtonSize(size, isRounded, isOnlyIcon);
@@ -187,30 +188,4 @@ export const ButtonStyled = React.forwardRef<
   }
 );
 ButtonStyled.displayName = "ButtonStyled";
-
-// import React, { FC } from "react";
-// import "./button.css";
-
-// export interface ButtonStyledProps {
-//   color: string;
-//   big?: boolean;
-// }
-
-// export const ButtonStyled: FC<React.PropsWithChildren<ButtonStyledProps>> = ({
-//   children,
-//   color,
-//   big,
-//   ...props
-// }) => {
-//   const rootClasses = ["my-button"];
-//   if (big) {
-//     rootClasses.push("big-btn");
-//   }
-
-//   return (
-//     <button {...props} className={rootClasses.join(" ")} style={{ color }}>
-//       {children}
-//     </button>
-//   );
-// };
 
