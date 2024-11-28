@@ -13,6 +13,7 @@ const StatusDataMap: Record<
 	}
 > = {
 	analyze: {
+		// TODO забор цветов из темы
 		color: '#2062F1',
 		background: '#EBF1FD',
 		label: 'Анализ',

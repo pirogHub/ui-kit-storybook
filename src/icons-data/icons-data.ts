@@ -5,6 +5,7 @@ const iconsUrlData = {
 	chest: '/img/icons/chest.svg',
 	pointerLi: '/img/icons/pointer-li.svg',
 	fileIcon: '/img/icons/file-icon-04.svg',
+	check: '/img/icons/check.svg',
 };
 
 export type MyIconName = keyof typeof iconsUrlData;
