@@ -170,7 +170,7 @@ export const TextAreaField: React.FC<
 		_isFocusedManual?: boolean;
 	}
 > = ({label, placeholder, error, textareaAs, _isFocusedManual}) => {
-	const [value, setValue] = useState('c');
+	const [value, setValue] = useState('');
 	const [isFocused, setIsFocused] = useState(_isFocusedManual);
 
 	const clearTextArea = () => {
